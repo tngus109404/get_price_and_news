@@ -1,0 +1,17 @@
+# core
+requests>=2.31.0
+pandas>=2.1.0
+numpy>=1.26.0
+tqdm>=4.66.0
+python-dateutil>=2.8.2
+
+# OpenAI (judge_filter_status_openai.py / extract_entities_triples_openai.py)
+openai>=1.40.0
+tenacity>=8.2.0
+
+# Article extraction (fetch_daily_news_gdelt.py)
+trafilatura>=1.9.0
+
+# AWS Bedrock Titan embedding (embed_titan_csv.py)
+boto3>=1.34.0
+botocore>=1.34.0
