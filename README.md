@@ -1,3 +1,5 @@
+### requirements.txt 설치 필요!!
+
 # 데이터 추가
 
 
