@@ -16,30 +16,12 @@ python fetch_new_prices.py \
   --ema_span 200
 ```
 
-이거 실행시키면 2025년11월1일부터 어제 자정까지의 가격데이터 들어가게됨
+실행시키면 2025년11월1일부터 어제 자정까지의 가격데이터 들어가게됨
 
-이제 매일매일 업데이트 할떄에는
+만약 start를 `"$YDAY"` 로 바꾸면 어제 하루 만의 가격데이터를 수집
 
-fetch_daily_tv.py 이거 파일 만들고
+이제 매일매일 업데이트 할떄에는 utc 시간 기준 12시가 지났을때 start를 `"$YDAY"` 로 바꿔서 실행
 
- 
-
-```jsx
-YDAY=$(python -c "import pandas as pd; print((pd.Timestamp.utcnow().normalize()-pd.Timedelta(days=1)).strftime('%Y-%m-%d'))")
-
-python fetch_daily_tv.py --target corn    --mode yday --history_csv data/_new/corn_new_20251101_20260128.csv
-
-```
-
-이거 실행시키면 작물별로 전날까지의 가격들과 ema를 가져옴
-
-나중에 db연동하면
-
-```jsx
-python fetch_daily_tv.py --target corn --mode yday --prev_ema <DB에서 읽은 전전날 EMA>
-```
-
-이거로 작동하면 됨
 
 # 뉴스데이터 추가
 
@@ -47,7 +29,9 @@ python fetch_daily_tv.py --target corn --mode yday --prev_ema <DB에서 읽은 �
 bash run_range_final.sh --slot A --start B --end C
 ```
 A : (day or night)
+
 B : (시작날짜)
+
 C : (종료날짜)
 
 시간은 UTC 기준!
